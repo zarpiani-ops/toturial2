@@ -32,52 +32,45 @@ dns:
     - 1.1.1.1
     - 112.215.203.254
 proxies:
-  - name: AKUN1
+  - name: AKUN VIP
     server: quiz.int.vidio.com
-    port: 80
-    type: vmess
-    uuid: 396415b0-6f7d-4df3-9d50-1a3ff9115b1a
+    port: 443
+    type: trojan
+    uuid: eea95f0e-35e4-41ef-82cd-c9f8950fa9be
     alterId: 0
     cipher: auto
     tls: false
     skip-cert-verify: true
-    servername: id2-ray.ipservers.xyz
+    servername: vipgpi.det.my.id
     network: ws
     ws-opts:
-      path: /JAGOANSSH/
+      path: /trojan-ws
       headers:
-        Host: id2-ray.ipservers.xyz
+        Host: vipgpi.det.my.id
     udp: true
   - name: AKUN2
-    server: quiz.int.vidio.com
-    port: 443
-    type: vless
-    uuid: 9cf9a9b0-2e2e-45bd-ac6f-5eaa44e30cfe
-    cipher: auto
-    tls: true
-    skip-cert-verify: true
-    servername: id1vless.ipservers.xyz
-    network: ws
-    ws-opts:
-      path: /jagoanssh
-      headers:
-        Host: id1vless.ipservers.xyz
+    type: trojan
+server: quiz.int.vidio.com
+port: 443
+password: eea95f0e-35e4-41ef-82cd-c9f8950fa9be
+udp: true
+sni: vipgpi.det.my.id
+skip-cert-verify: true
+network: grpc
+grpc-opts:
+grpc-service-name: trojan-grpc
     udp: true
   - name: AKUN3
-    server: quiz.int.vidio.com
-    port: 443
-    type: vless
-    uuid: aae98731-898a-4cd3-8c7f-d09af2387d63
-    cipher: auto
-    tls: true
-    skip-cert-verify: true
-    servername: id2vless.ipservers.xyz
-    network: ws
-    ws-opts:
-      path: /jagoanssh
-      headers:
-        Host: id2vless.ipservers.xyz
-    udp: true
+    type: trojan
+server: quiz.int.vidio.com
+port: 443
+password: eea95f0e-35e4-41ef-82cd-c9f8950fa9be
+udp: true
+sni: vipgpi.det.my.id
+skip-cert-verify: true
+network: grpc
+grpc-opts:
+grpc-service-name: trojan-grpc
 
 proxy-groups:
   - name: ID-X
@@ -85,7 +78,7 @@ proxy-groups:
     url: http://www.gstatic.com/generate_204
     interval: 300
     proxies:
-      - AKUN1
+      - AKUN TROJAN VIP
       - AKUN2
       - AKUN3
 
@@ -167,3 +160,4 @@ rule-providers:
     type: file
     behavior: domain
     path: ./block.yaml  
+
